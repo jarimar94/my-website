@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maeves Beauty — Coming Soon</title>
+  <title>Maeves Beauty | Services & Prices</title>
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -23,11 +23,11 @@
       background-attachment: fixed;
     }
     .banner {
-      padding: 23px 16px;
+      padding: 22px 16px;
       text-align: center;
       background: linear-gradient(100deg, #e75ca8, #9d49bd 55%, #e75ca8);
       background-size: 200% 100%;
-      box-shadow: 0 5px 28px rgba(255, 125, 220, .35);
+      box-shadow: 0 5px 28px rgba(255,125,220,.35);
       animation: shimmer 7s ease-in-out infinite alternate;
     }
     .banner h1 {
@@ -36,24 +36,18 @@
       letter-spacing: .16em;
       text-shadow: 0 0 12px rgba(255,255,255,.75), 0 3px 12px rgba(48,0,65,.35);
     }
-    .banner h1 span { color: #fff2fc; padding: 0 .35em; }
-    section {
+    .banner span { color: #fff2fc; padding: 0 .35em; }
+    section { padding: 48px 22px; text-align: center; }
+    .hero {
       min-height: calc(100vh - 82px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 48px 22px;
-      text-align: center;
     }
-    .hero h2 {
-      margin: 0;
-      font-size: clamp(3.6rem, 12vw, 8rem);
-      line-height: .95;
-      text-shadow: 0 5px 26px rgba(15,0,35,.42);
-    }
+    .hero h2 { margin: 0; font-size: clamp(3.6rem, 12vw, 8rem); line-height: .95; text-shadow: 0 5px 26px rgba(15,0,35,.42); }
     .hero p { margin: 24px 0 32px; color: #f8eaff; font-size: clamp(1rem, 3vw, 1.25rem); }
-    .next, .back {
+    .button {
       display: inline-block;
       padding: 15px 34px;
       border: 2px solid rgba(255,255,255,.85);
@@ -66,39 +60,112 @@
       text-decoration: none;
       transition: transform .2s, box-shadow .2s;
     }
-    .next:hover, .back:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(255,220,250,.75); }
-    #start { scroll-margin-top: 16px; }
-    .welcome {
-      max-width: 720px;
-      padding: clamp(28px, 7vw, 60px);
-      border: 1px solid rgba(255,255,255,.45);
-      border-radius: 28px;
-      background: rgba(42, 11, 69, .62);
-      box-shadow: 0 0 50px rgba(232,121,224,.2);
+    .button:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(255,220,250,.75); }
+    #services { scroll-margin-top: 16px; }
+    .section-title { margin: 0 0 12px; font-size: clamp(2.5rem, 7vw, 4.5rem); }
+    .section-intro { margin: 0 auto 34px; color: #f8eaff; font-size: 1.1rem; }
+    .price-grid {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      text-align: left;
+    }
+    .price-card {
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 20px;
+      background: rgba(42,11,69,.76);
+      box-shadow: 0 0 28px rgba(232,121,224,.14);
       backdrop-filter: blur(5px);
     }
-    .welcome h2 { margin: 0 0 18px; font-size: clamp(2.2rem, 7vw, 4.5rem); }
-    .welcome p { margin: 0 0 30px; color: #f8eaff; font-size: 1.15rem; line-height: 1.7; }
+    .price-card h3 { margin: 0 0 16px; color: #ffb8df; font-size: 1.2rem; letter-spacing: .06em; text-transform: uppercase; }
+    .price-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.13); color: #f9efff; }
+    .price-row:last-child { border-bottom: 0; }
+    .price-row strong { color: #fff; white-space: nowrap; }
+    .subhead { margin: 20px 0 5px; color: #ffd0eb; font-weight: 700; }
+    .booking-note { margin: 34px auto 18px; color: #f8eaff; }
     @keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+    @media (max-width: 850px) { .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } .price-card { padding: 20px; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
   </style>
 </head>
 <body>
-  <header class="banner">
-    <h1><span>✦</span> MAEVES BEAUTY <span>✦</span></h1>
-  </header>
+  <header class="banner"><h1><span>✦</span> MAEVES BEAUTY <span>✦</span></h1></header>
   <main>
-    <section class="hero" aria-labelledby="coming-soon">
+    <section class="hero" id="top" aria-labelledby="coming-soon">
       <h2 id="coming-soon">Coming<br>Soon</h2>
       <p>Makeup for your special moments.</p>
-      <a class="next" href="#start">Next <span aria-hidden="true">↓</span></a>
+      <a class="button" href="#services">Next <span aria-hidden="true">↓</span></a>
     </section>
-    <section id="start" aria-labelledby="start-heading">
-      <div class="welcome">
-        <h2 id="start-heading">Let’s start building your glam.</h2>
-        <p>Your beauty journey starts here. We’ll add makeup services, photos and videos, and easy appointment booking next.</p>
-        <a class="back" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Back to top</a>
+    <section id="services" aria-labelledby="prices-title">
+      <h2 class="section-title" id="prices-title">Services &amp; Prices</h2>
+      <p class="section-intro">Find the perfect glam for your special moment.</p>
+      <div class="price-grid">
+        <article class="price-card">
+          <h3>Classic Lashes</h3>
+          <div class="price-row"><span>Full set</span><strong>100,-</strong></div>
+          <div class="price-row"><span>1 Week Refill</span><strong>40,-</strong></div>
+          <div class="price-row"><span>2 Week Refill</span><strong>60,-</strong></div>
+          <div class="price-row"><span>3 Weeks Refill</span><strong>80,-</strong></div>
+        </article>
+        <article class="price-card">
+          <h3>Hybrid Lashes</h3>
+          <div class="price-row"><span>Full set</span><strong>140,-</strong></div>
+          <div class="price-row"><span>1 Week Refill</span><strong>50,-</strong></div>
+          <div class="price-row"><span>2 Week Refill</span><strong>70,-</strong></div>
+          <div class="price-row"><span>3 Weeks Refill</span><strong>90,-</strong></div>
+        </article>
+        <article class="price-card">
+          <h3>Volume Lashes</h3>
+          <div class="price-row"><span>Full set</span><strong>160,-</strong></div>
+          <div class="price-row"><span>1 Week Refill</span><strong>60,-</strong></div>
+          <div class="price-row"><span>2 Week Refill</span><strong>80,-</strong></div>
+          <div class="price-row"><span>3 Weeks Refill</span><strong>90,-</strong></div>
+        </article>
+        <article class="price-card"><h3>Lash Removal</h3><div class="price-row"><span>Lash Removal</span><strong>20,-</strong></div></article>
+        <article class="price-card">
+          <h3>Eyebrows Services</h3>
+          <div class="price-row"><span>Brow Laminations</span><strong>65,-</strong></div>
+          <div class="price-row"><span>Brow Tinting</span><strong>40,-</strong></div>
+          <div class="price-row"><span>Brow Wax</span><strong>25,-</strong></div>
+          <div class="price-row"><span>Brow Wax &amp; Tinting</span><strong>50,-</strong></div>
+        </article>
+        <article class="price-card">
+          <h3>Lash Lift</h3>
+          <div class="price-row"><span>Lash Lift</span><strong>75,-</strong></div>
+          <div class="price-row"><span>Lash Lift &amp; Tinting</span><strong>95,-</strong></div>
+          <div class="price-row"><span>Lash Tinting</span><strong>25,-</strong></div>
+        </article>
+        <article class="price-card">
+          <h3>Additional Services</h3>
+          <div class="price-row"><span>Upperlip / Chin Wax</span><strong>20,-</strong></div>
+          <div class="price-row"><span>Underarm Wax</span><strong>35,-</strong></div>
+          <div class="price-row"><span>Full legs Wax</span><strong>75,-</strong></div>
+          <div class="price-row"><span>Half legs Wax</span><strong>55,-</strong></div>
+        </article>
+        <article class="price-card">
+          <h3>Make Up Services</h3>
+          <div class="price-row"><span>Soft Glam</span><strong>65,-</strong></div>
+          <div class="price-row"><span>Natural Glam</span><strong>55,-</strong></div>
+          <div class="price-row"><span>Full Glam</span><strong>75,-</strong></div>
+          <div class="price-row"><span>Carnaval Make up</span><strong>85,-</strong></div>
+          <div class="subhead">Kids</div>
+          <div class="price-row"><span>Soft Make up Kids</span><strong>25,-</strong></div>
+          <div class="price-row"><span>Carnaval Make Up</span><strong>35,-</strong></div>
+        </article>
+        <article class="price-card">
+          <h3>Hair Services</h3>
+          <div class="price-row"><span>Four Braids</span><strong>45,-</strong></div>
+          <div class="price-row"><span>Half Dutch Braids</span><strong>25,-</strong></div>
+          <div class="price-row"><span>Dutch Braids</span><strong>35,-</strong></div>
+          <div class="price-row"><span>Six Braids</span><strong>55,-</strong></div>
+        </article>
       </div>
+      <p class="booking-note">Booking details coming soon. Contact Maeves Beauty to schedule an appointment.</p>
+      <a class="button" href="#top">Back to top ↑</a>
     </section>
   </main>
 </body>
