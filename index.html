@@ -7,29 +7,14 @@
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      position: relative;
-      isolation: isolate;
-      min-height: 100vh;
-      margin: 0;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      background: #351052;
-    }
+    body { position: relative; isolation: isolate; min-height: 100vh; margin: 0; color: #fff; font-family: Arial, sans-serif; background: #351052; }
     .video-background {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      overflow: hidden;
-      background: linear-gradient(135deg, #34104f, #64218b 55%, #3b145f);
-      pointer-events: none;
+      position: fixed; inset: 0; z-index: -1; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+      background: linear-gradient(135deg, #34104f, #64218b 55%, #3b145f); pointer-events: none;
     }
     .video-background video { width: 100%; height: 100%; object-fit: cover; opacity: .86; }
     .video-shade {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image:
         radial-gradient(2px 2px at 12% 18%, #fff 99%, transparent),
         radial-gradient(1.5px 1.5px at 78% 24%, #fff 99%, transparent),
@@ -39,64 +24,20 @@
         linear-gradient(rgba(48,12,72,.62), rgba(39,8,63,.7));
       background-size: 260px 240px, 310px 280px, 360px 330px, 230px 250px, 320px 300px, cover;
     }
-    .banner {
-      padding: 22px 16px;
-      text-align: center;
-      background: linear-gradient(100deg, #e75ca8, #9d49bd 55%, #e75ca8);
-      background-size: 200% 100%;
-      box-shadow: 0 5px 28px rgba(255,125,220,.35);
-      animation: shimmer 7s ease-in-out infinite alternate;
-    }
-    .banner h1 {
-      margin: 0;
-      font-size: clamp(1.5rem, 5vw, 2.8rem);
-      letter-spacing: .16em;
-      text-shadow: 0 0 12px rgba(255,255,255,.75), 0 3px 12px rgba(48,0,65,.35);
-    }
+    .banner { padding: 22px 16px; text-align: center; background: linear-gradient(100deg, #e75ca8, #9d49bd 55%, #e75ca8); background-size: 200% 100%; box-shadow: 0 5px 28px rgba(255,125,220,.35); animation: shimmer 7s ease-in-out infinite alternate; }
+    .banner h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.8rem); letter-spacing: .16em; text-shadow: 0 0 12px rgba(255,255,255,.75), 0 3px 12px rgba(48,0,65,.35); }
     .banner span { color: #fff2fc; padding: 0 .35em; }
     section { padding: 48px 22px; text-align: center; }
-    .hero {
-      min-height: calc(100vh - 82px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+    .hero { min-height: calc(100vh - 82px); display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .hero h2 { margin: 0; font-size: clamp(3.6rem, 12vw, 8rem); line-height: .95; text-shadow: 0 5px 26px rgba(15,0,35,.42); }
     .hero p { margin: 24px 0 32px; color: #f8eaff; font-size: clamp(1rem, 3vw, 1.25rem); }
-    .button {
-      display: inline-block;
-      padding: 15px 34px;
-      border: 2px solid rgba(255,255,255,.85);
-      border-radius: 999px;
-      color: #fff;
-      background: linear-gradient(100deg, #e75ca8, #9847bd);
-      box-shadow: 0 0 22px rgba(247,143,226,.55);
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
-    }
+    .button { display: inline-block; padding: 15px 34px; border: 2px solid rgba(255,255,255,.85); border-radius: 999px; color: #fff; background: linear-gradient(100deg, #e75ca8, #9847bd); box-shadow: 0 0 22px rgba(247,143,226,.55); font-size: 1.1rem; font-weight: 700; text-decoration: none; transition: transform .2s, box-shadow .2s; }
     .button:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(255,220,250,.75); }
     #services { scroll-margin-top: 16px; }
     .section-title { margin: 0 0 12px; font-size: clamp(2.5rem, 7vw, 4.5rem); text-shadow: 0 3px 20px rgba(20,0,30,.55); }
     .section-intro { margin: 0 auto 34px; color: #fff; font-size: 1.1rem; text-shadow: 0 2px 10px rgba(20,0,30,.7); }
-    .price-grid {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      text-align: left;
-    }
-    .price-card {
-      padding: 22px;
-      border: 1px solid rgba(255,255,255,.52);
-      border-radius: 20px;
-      background: rgba(42,11,69,.88);
-      box-shadow: 0 0 28px rgba(232,121,224,.2);
-      backdrop-filter: blur(7px);
-    }
+    .price-grid { width: min(1120px, 100%); margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; text-align: left; }
+    .price-card { padding: 22px; border: 1px solid rgba(255,255,255,.52); border-radius: 20px; background: rgba(42,11,69,.88); box-shadow: 0 0 28px rgba(232,121,224,.2); backdrop-filter: blur(7px); }
     .price-card h3 { margin: 0 0 16px; color: #ffb8df; font-size: 1.2rem; letter-spacing: .06em; text-transform: uppercase; }
     .price-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.18); color: #fff; }
     .price-row:last-child { border-bottom: 0; }
@@ -106,16 +47,13 @@
     @keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
     @media (max-width: 850px) { .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } .price-card { padding: 20px; } }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
-      .video-background video { display: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } .video-background video { display: none; } }
   </style>
 </head>
 <body>
   <div class="video-background" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="metadata"><source src="fc4cfe0e62ba4eaeb3842de14494b286.mov" type="video/quicktime"></video>
-    <video autoplay muted loop playsinline preload="metadata"><source src="AC5BC22A-49D5-4CAC-A143-F203E1FECCC2.mov" type="video/quicktime"></video>
+    <video autoplay muted loop playsinline preload="auto"><source src="background-left.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline preload="auto"><source src="background-right.mp4" type="video/mp4"></video>
     <div class="video-shade"></div>
   </div>
   <header class="banner"><h1><span>✦</span> MAEVES BEAUTY <span>✦</span></h1></header>
