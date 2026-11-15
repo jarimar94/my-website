@@ -8,19 +8,36 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
+      position: relative;
+      isolation: isolate;
+      min-height: 100vh;
       margin: 0;
       color: #fff;
       font-family: Arial, sans-serif;
-      background-color: #351052;
+      background: #351052;
+    }
+    .video-background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      background: linear-gradient(135deg, #34104f, #64218b 55%, #3b145f);
+      pointer-events: none;
+    }
+    .video-background video { width: 100%; height: 100%; object-fit: cover; opacity: .86; }
+    .video-shade {
+      position: absolute;
+      inset: 0;
       background-image:
         radial-gradient(2px 2px at 12% 18%, #fff 99%, transparent),
         radial-gradient(1.5px 1.5px at 78% 24%, #fff 99%, transparent),
         radial-gradient(2px 2px at 42% 68%, rgba(255,255,255,.9) 99%, transparent),
         radial-gradient(1px 1px at 88% 82%, #fff 99%, transparent),
         radial-gradient(1.5px 1.5px at 22% 88%, rgba(255,255,255,.85) 99%, transparent),
-        linear-gradient(135deg, #34104f, #64218b 55%, #3b145f);
+        linear-gradient(rgba(48,12,72,.62), rgba(39,8,63,.7));
       background-size: 260px 240px, 310px 280px, 360px 330px, 230px 250px, 320px 300px, cover;
-      background-attachment: fixed;
     }
     .banner {
       padding: 22px 16px;
@@ -62,8 +79,8 @@
     }
     .button:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(255,220,250,.75); }
     #services { scroll-margin-top: 16px; }
-    .section-title { margin: 0 0 12px; font-size: clamp(2.5rem, 7vw, 4.5rem); }
-    .section-intro { margin: 0 auto 34px; color: #f8eaff; font-size: 1.1rem; }
+    .section-title { margin: 0 0 12px; font-size: clamp(2.5rem, 7vw, 4.5rem); text-shadow: 0 3px 20px rgba(20,0,30,.55); }
+    .section-intro { margin: 0 auto 34px; color: #fff; font-size: 1.1rem; text-shadow: 0 2px 10px rgba(20,0,30,.7); }
     .price-grid {
       width: min(1120px, 100%);
       margin: 0 auto;
@@ -74,95 +91,53 @@
     }
     .price-card {
       padding: 22px;
-      border: 1px solid rgba(255,255,255,.38);
+      border: 1px solid rgba(255,255,255,.52);
       border-radius: 20px;
-      background: rgba(42,11,69,.76);
-      box-shadow: 0 0 28px rgba(232,121,224,.14);
-      backdrop-filter: blur(5px);
+      background: rgba(42,11,69,.88);
+      box-shadow: 0 0 28px rgba(232,121,224,.2);
+      backdrop-filter: blur(7px);
     }
     .price-card h3 { margin: 0 0 16px; color: #ffb8df; font-size: 1.2rem; letter-spacing: .06em; text-transform: uppercase; }
-    .price-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.13); color: #f9efff; }
+    .price-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.18); color: #fff; }
     .price-row:last-child { border-bottom: 0; }
     .price-row strong { color: #fff; white-space: nowrap; }
     .subhead { margin: 20px 0 5px; color: #ffd0eb; font-weight: 700; }
-    .booking-note { margin: 34px auto 18px; color: #f8eaff; }
+    .booking-note { margin: 34px auto 18px; color: #fff; text-shadow: 0 2px 10px rgba(20,0,30,.7); }
     @keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
     @media (max-width: 850px) { .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 560px) { .price-grid { grid-template-columns: 1fr; } .price-card { padding: 20px; } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+      .video-background video { display: none; }
+    }
   </style>
 </head>
 <body>
+  <div class="video-background" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata"><source src="fc4cfe0e62ba4eaeb3842de14494b286.mov" type="video/quicktime"></video>
+    <video autoplay muted loop playsinline preload="metadata"><source src="AC5BC22A-49D5-4CAC-A143-F203E1FECCC2.mov" type="video/quicktime"></video>
+    <div class="video-shade"></div>
+  </div>
   <header class="banner"><h1><span>✦</span> MAEVES BEAUTY <span>✦</span></h1></header>
   <main>
     <section class="hero" id="top" aria-labelledby="coming-soon">
       <h2 id="coming-soon">Coming<br>Soon</h2>
-      <p>Makeup/Lashes/EyeBrows/Wax/Hair Services for your special moments.</p>
+      <p>Makeup for your special moments.</p>
       <a class="button" href="#services">Next <span aria-hidden="true">↓</span></a>
     </section>
     <section id="services" aria-labelledby="prices-title">
       <h2 class="section-title" id="prices-title">Services &amp; Prices</h2>
       <p class="section-intro">Find the perfect glam for your special moment.</p>
       <div class="price-grid">
-        <article class="price-card">
-          <h3>Classic Lashes</h3>
-          <div class="price-row"><span>Full set</span><strong>100,-</strong></div>
-          <div class="price-row"><span>1 Week Refill</span><strong>40,-</strong></div>
-          <div class="price-row"><span>2 Week Refill</span><strong>60,-</strong></div>
-          <div class="price-row"><span>3 Weeks Refill</span><strong>80,-</strong></div>
-        </article>
-        <article class="price-card">
-          <h3>Hybrid Lashes</h3>
-          <div class="price-row"><span>Full set</span><strong>140,-</strong></div>
-          <div class="price-row"><span>1 Week Refill</span><strong>50,-</strong></div>
-          <div class="price-row"><span>2 Week Refill</span><strong>70,-</strong></div>
-          <div class="price-row"><span>3 Weeks Refill</span><strong>90,-</strong></div>
-        </article>
-        <article class="price-card">
-          <h3>Volume Lashes</h3>
-          <div class="price-row"><span>Full set</span><strong>160,-</strong></div>
-          <div class="price-row"><span>1 Week Refill</span><strong>60,-</strong></div>
-          <div class="price-row"><span>2 Week Refill</span><strong>80,-</strong></div>
-          <div class="price-row"><span>3 Weeks Refill</span><strong>90,-</strong></div>
-        </article>
+        <article class="price-card"><h3>Classic Lashes</h3><div class="price-row"><span>Full set</span><strong>100,-</strong></div><div class="price-row"><span>1 Week Refill</span><strong>40,-</strong></div><div class="price-row"><span>2 Week Refill</span><strong>60,-</strong></div><div class="price-row"><span>3 Weeks Refill</span><strong>80,-</strong></div></article>
+        <article class="price-card"><h3>Hybrid Lashes</h3><div class="price-row"><span>Full set</span><strong>140,-</strong></div><div class="price-row"><span>1 Week Refill</span><strong>50,-</strong></div><div class="price-row"><span>2 Week Refill</span><strong>70,-</strong></div><div class="price-row"><span>3 Weeks Refill</span><strong>90,-</strong></div></article>
+        <article class="price-card"><h3>Volume Lashes</h3><div class="price-row"><span>Full set</span><strong>160,-</strong></div><div class="price-row"><span>1 Week Refill</span><strong>60,-</strong></div><div class="price-row"><span>2 Week Refill</span><strong>80,-</strong></div><div class="price-row"><span>3 Weeks Refill</span><strong>90,-</strong></div></article>
         <article class="price-card"><h3>Lash Removal</h3><div class="price-row"><span>Lash Removal</span><strong>20,-</strong></div></article>
-        <article class="price-card">
-          <h3>Eyebrows Services</h3>
-          <div class="price-row"><span>Brow Laminations</span><strong>65,-</strong></div>
-          <div class="price-row"><span>Brow Tinting</span><strong>40,-</strong></div>
-          <div class="price-row"><span>Brow Wax</span><strong>25,-</strong></div>
-          <div class="price-row"><span>Brow Wax &amp; Tinting</span><strong>50,-</strong></div>
-        </article>
-        <article class="price-card">
-          <h3>Lash Lift</h3>
-          <div class="price-row"><span>Lash Lift</span><strong>75,-</strong></div>
-          <div class="price-row"><span>Lash Lift &amp; Tinting</span><strong>95,-</strong></div>
-          <div class="price-row"><span>Lash Tinting</span><strong>25,-</strong></div>
-        </article>
-        <article class="price-card">
-          <h3>Additional Services</h3>
-          <div class="price-row"><span>Upperlip / Chin Wax</span><strong>20,-</strong></div>
-          <div class="price-row"><span>Underarm Wax</span><strong>35,-</strong></div>
-          <div class="price-row"><span>Full legs Wax</span><strong>75,-</strong></div>
-          <div class="price-row"><span>Half legs Wax</span><strong>55,-</strong></div>
-        </article>
-        <article class="price-card">
-          <h3>Make Up Services</h3>
-          <div class="price-row"><span>Soft Glam</span><strong>65,-</strong></div>
-          <div class="price-row"><span>Natural Glam</span><strong>55,-</strong></div>
-          <div class="price-row"><span>Full Glam</span><strong>75,-</strong></div>
-          <div class="price-row"><span>Carnaval Make up</span><strong>85,-</strong></div>
-          <div class="subhead">Kids</div>
-          <div class="price-row"><span>Soft Make up Kids</span><strong>25,-</strong></div>
-          <div class="price-row"><span>Carnaval Make Up</span><strong>35,-</strong></div>
-        </article>
-        <article class="price-card">
-          <h3>Hair Services</h3>
-          <div class="price-row"><span>Four Braids</span><strong>45,-</strong></div>
-          <div class="price-row"><span>Half Dutch Braids</span><strong>25,-</strong></div>
-          <div class="price-row"><span>Dutch Braids</span><strong>35,-</strong></div>
-          <div class="price-row"><span>Six Braids</span><strong>55,-</strong></div>
-        </article>
+        <article class="price-card"><h3>Eyebrows Services</h3><div class="price-row"><span>Brow Laminations</span><strong>65,-</strong></div><div class="price-row"><span>Brow Tinting</span><strong>40,-</strong></div><div class="price-row"><span>Brow Wax</span><strong>25,-</strong></div><div class="price-row"><span>Brow Wax &amp; Tinting</span><strong>50,-</strong></div></article>
+        <article class="price-card"><h3>Lash Lift</h3><div class="price-row"><span>Lash Lift</span><strong>75,-</strong></div><div class="price-row"><span>Lash Lift &amp; Tinting</span><strong>95,-</strong></div><div class="price-row"><span>Lash Tinting</span><strong>25,-</strong></div></article>
+        <article class="price-card"><h3>Additional Services</h3><div class="price-row"><span>Upperlip / Chin Wax</span><strong>20,-</strong></div><div class="price-row"><span>Underarm Wax</span><strong>35,-</strong></div><div class="price-row"><span>Full legs Wax</span><strong>75,-</strong></div><div class="price-row"><span>Half legs Wax</span><strong>55,-</strong></div></article>
+        <article class="price-card"><h3>Make Up Services</h3><div class="price-row"><span>Soft Glam</span><strong>65,-</strong></div><div class="price-row"><span>Natural Glam</span><strong>55,-</strong></div><div class="price-row"><span>Full Glam</span><strong>75,-</strong></div><div class="price-row"><span>Carnaval Make up</span><strong>85,-</strong></div><div class="subhead">Kids</div><div class="price-row"><span>Soft Make up Kids</span><strong>25,-</strong></div><div class="price-row"><span>Carnaval Make Up</span><strong>35,-</strong></div></article>
+        <article class="price-card"><h3>Hair Services</h3><div class="price-row"><span>Four Braids</span><strong>45,-</strong></div><div class="price-row"><span>Half Dutch Braids</span><strong>25,-</strong></div><div class="price-row"><span>Dutch Braids</span><strong>35,-</strong></div><div class="price-row"><span>Six Braids</span><strong>55,-</strong></div></article>
       </div>
       <p class="booking-note">Booking details coming soon. Contact Maeves Beauty to schedule an appointment.</p>
       <a class="button" href="#top">Back to top ↑</a>
