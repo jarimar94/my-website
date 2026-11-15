@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Makeup by [Your Name]</title>
+  </head>
+  <body>
+    <h1>Makeup by [Your Name]</h1>
+    <p>Makeup for your special moments.</p>
+    <a href="#booking">Book an appointment</a>
+
+    <h2>My work</h2>
+    <p>Add your makeup photos and videos here.</p>
+
+    <h2 id="booking">Book with me</h2>
+    <p>Booking details coming soon. Contact me to schedule an appointment.</p>
+  </body>
+</html>
